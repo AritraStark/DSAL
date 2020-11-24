@@ -7,7 +7,8 @@ int main()
 
 	int* ptr;
 	int n, i;
-	scanf("Enter number of elements: %d\n", n);
+	cout<<"Enter number of elements:"<<endl;
+	cin>>n;
 	ptr = (int*)malloc(n * sizeof(int));
 	if (ptr == NULL) {
 		cout<<"Memory not allocated"<<endl;
@@ -16,11 +17,12 @@ int main()
 	else {
 		cout<<"Memory successfully allocated using malloc."<<endl;
 		for (i = 0; i < n; ++i) {
-			cin>>(ptr+i);
+			cout<<"Enter element "<<i+1<<endl;
+			cin>>*(ptr+i);
 		}
 		cout<<"The elements of the array are: ";
 		for (i = 0; i < n; ++i) {
-			cout<<*(ptr+i);
+			cout<<*(ptr+i)<<" ";
 		}
 	}
 
