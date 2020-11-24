@@ -1,0 +1,26 @@
+1.	Design the class(es) for the following. Each account has account number and balance amount. A list of account is to be maintained where one can add and find account, display information of all accounts. While adding, account number must be unique. Withdraw object has account number (must exist) and amount (will not exceed balance amount of corresponding account). Withdraw object will update the balance of corresponding account in the list. Implement your design. Use friend function wherever required and again, modify your implementation to avoid friend function.
+
+2.	Design a COMPLEX class, which will behave like normal integer with respect to 
+•	addition, 
+•	subtraction, 
+•	accepting the value and 
+•	Displaying the value.
+
+3.	Design an ARRAY class with the following features:
+a.	Array object may be declared for a specific size and a value for initializing all the elements. If this it is to be assumed as a 0.
+b.	An array object may be declared and initialized with another object.
+c.	An array object may be declared and initialized with another array (not the object, standard array as in C language).
+
+Let a and b are two objects:
+i.	a+b will add corresponding elements.
+ii.	a=b will do the assignment.
+iii.	a[I] will return the ith element of the object.
+iv.	a*5 or 5*a will multiply the element with 5.
+
+4.	Design a STRING class, which will have the initialization facility similar to array class. Provide support for 
+•	Assigning one object for another, 
+•	Two string can be concatenated using + operator, 
+•	Two strings can be compared using the relational operators.
+
+5.	Modify the STRING class so that assigning/initializing a string by another will not copy it physically but will keep a reference count, which will be incremented. Reference value 0 means the space can be released.
+6.	For each student roll, name and phone number are to be maintained. For each subject store subject code, name. A student may choose number of subjects from a list of subjects. A subject may be chosen by number of students. Given a roll number system must able to display the subjects chosen by the student and also be able to display the students corresponding to a subject code. Design the classes and implement the system.
