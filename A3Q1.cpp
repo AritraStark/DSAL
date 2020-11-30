@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include <stdio.h>
+#include <iostream>
+//#include<bits/stdc++.h>
 using namespace std;
 
 #define MAX(x,y) ((x>y)?x:y)

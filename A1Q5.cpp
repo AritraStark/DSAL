@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
+#include <stdio.h>
+#include <iostream>
 using namespace std;
 
 void arrange(char name[][51],int age[],int n)

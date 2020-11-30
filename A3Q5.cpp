@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include <stdio.h>
+#include <iostream>
+//#include<bits/stdc++.h>
 using namespace std;
 
 double calc(double i,double t=0.1){
