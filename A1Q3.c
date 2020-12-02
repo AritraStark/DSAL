@@ -1,41 +1,40 @@
-#include <stdio.h> 
-#include <iostream> 
-using namespace std;
+#include <stdio.h>
+#include <conio.h>
 
 void aop(){
     int r, c, i, j, count; 
-    cout<<"Enter rows and columns"<<endl;
-    cin>>r>>c;
+    printf("Enter rows and columns\n");
+    scanf("%d%d",&r,&c);
     int *arr[r]; 
     for (i=0; i<r; i++) 
          arr[i] = (int *)malloc(c * sizeof(int)); 
-    cout<<"Enter the elements";
+    printf("Enter the elements");
     count = 0; 
     for (i = 0; i <  r; i++) 
       for (j = 0; j < c; j++) 
-         cin>>arr[i][j];
+         scanf("%d",&arr[i][j]);
   
     for (i = 0; i <  r; i++) 
       for (j = 0; j < c; j++) 
-         cout<<arr[i][j]; 
-         cout<<endl;
+         printf("%d",arr[i][j]); 
+         printf("\n");
   
 }
 
 void sp(){
     int r, c, i, j, count=0; 
-    cout<<"Enter rows and columns"<<endl;
-    cin>>r>>c;
+    printf("Enter rows and columns\n");
+    scanf("%d%d",&r,&c);
     int *arr = (int *)malloc(r * c * sizeof(int)); 
-    cout<<"Enter the elements";
+    printf("Enter the elements");
     for (i = 0; i <  r; i++) 
       for (j = 0; j < c; j++) 
-         cin>>*(arr + i*c + j);
+         scanf("%d",(arr + i*c + j));
   
     for (i = 0; i <  r; i++) 
       for (j = 0; j < c; j++) 
-         cout<<*(arr + i*c + j); 
-         cout<<endl;
+         printf("%d",*(arr + i*c + j)); 
+         printf("\n");
 }
   
 int main() 

@@ -1,7 +1,6 @@
-//#include<bits/stdc++.h>
 #include <stdio.h>
-#include <iostream>
-using namespace std;
+#include <conio.h>
+#include <string.h>
 
 void arrange(char name[][51],int age[],int n)
 {
@@ -26,25 +25,25 @@ void arrange(char name[][51],int age[],int n)
 void display(char name[][51],int age[],int n)
 {
   int i,j;
-  cout<<"_____________"<<endl;
-  cout<<"Age             Name\n";
-  cout<<"_____________"<<endl;
+  printf("_____________\n");
+  printf("Age             Name\n");
+  printf("_____________\n");
     for(i=0;i<n;i++)
-     cout<<age[i]<<"             "<<name[i]<<endl;
+     printf("%d             %s",age[i],name[i]);
 }
 int main()
 {
    int n,i;
-   cout<<"Enter the number of names to be listed:  ";
-   cin>>n;
+   printf("Enter the number of names to be listed:  ");
+   scanf("%d",&n);
    int age[n];
    char name[n][51];
      for(i=0;i<n;i++)
      {
-        cout<<"Enter name: ";
-        cin>>name[i];
-        cout<<("Enter age: ");
-        cin>>age[i];
+        printf("Enter name: ");
+        scanf("%s",&name[i]);
+        printf("Enter age: ");
+        scanf("%d",age[i]);
      }
      arrange(name,age,n);
      display(name,age,n);

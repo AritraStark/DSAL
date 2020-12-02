@@ -3,37 +3,37 @@
 using namespace std;
 
 void input(int r, int c, int *arr[]){
-  cout<<"Enter the elements";
+  printf("Enter the elements");
   for (int i = 0; i <  r; i++) 
       for (int j = 0; j < c; j++) 
-         cin>>arr[i][j];
+         scanf("%d",arr[i][j]);
 }
 
 void output(int r, int c, int *arr[]){
   for (int i = 0; i <  r; i++) 
       for (int j = 0; j < c; j++) 
-         cout<<arr[i][j]; 
-         cout<<endl;
+         printf("%d",arr[i][j]); 
+         printf("\n");
 }
 
 void input(int r, int c, int *arr){
-  cout<<"Enter the elements";
+  printf("Enter the elements");
   for (int i = 0; i <  r; i++) 
       for (int j = 0; j < c; j++) 
-         cin>>arr[i][j];
+         scanf("%d",&arr[i][j]);
 }
 
 void output(int r, int c, int *arr){
   for (int i = 0; i <  r; i++) 
       for (int j = 0; j < c; j++) 
-         cout<<arr[i][j]; 
-         cout<<endl;
+         printf("%d",arr[i][j]); 
+         printf("\n");
 }
 
 void aop(){
     int r, c, count; 
-    cout<<"Enter rows and columns"<<endl;
-    cin>>r>>c;
+    printf("Enter rows and columns\n");
+    scanf("%d%d",&r,&c);
     int *arr[r]; 
     for (int i=0; i<r; i++) 
          arr[i] = (int *)malloc(c * sizeof(int)); 
@@ -44,8 +44,8 @@ void aop(){
 
 void sp(){
     int r, c, count=0; 
-    cout<<"Enter rows and columns"<<endl;
-    cin>>r>>c;
+    printf("Enter rows and columns\n");
+    scanf("%d%d",&r,&c);
     int *arr = (int *)malloc(r * c * sizeof(int)); 
     input(r,c,arr);
     output(r,c,arr); 

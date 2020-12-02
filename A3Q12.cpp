@@ -4,92 +4,94 @@
 
 using namespace std;
 
-class APPLICANT{
-    int id,score;
-    string name;
+class STUDENT{
+    int roll, marks[5];
+    string name,course,date;
     
     public:
-    APPLICANT(){
+    STUDENT(){
         name = "";
-        score = 0;
-        id = 0;
+        date = "";
+        course="";
+        roll = 0;
     }
 
-    APPLICANT(string nm,int sc,int ids){
-        name = nm;
-        score = sc;
-        id = ids;
+    // STUDENT(string nm, string crs, string dt,int ids){
+    //     name = nm;
+    //     date = dt;
+    //     roll = ids;
+    //     course = crs;
+    // }
+
+    void admission(){
+        //int roll1;
+        //string nam,cours,dae;        
+        cout<<"Enter Name, Roll Number, Course and Date (in DD/MM/YY format)  "<<endl;
+        //cin>>nam>>roll1>>cours>>dae;
+        cin>>name>>roll>>course>>date;
     }
 
-    int getId(){
-        return id+1;
-    }
-
-    void show(){
-        cout<<"\nId of Applicant: "<<id<<endl;
-        cout<<"Name of Applicant: "<<name<<endl;
-        cout<<"Score of Applicant: "<<score<<endl;
-    }
-};
-
-class APPSTK{
-    private:
-    int top=0;
-    APPLICANT arr[100];
-
-    public:
-    void push(){
-        int ida,scr;
-        string nam;
-        cout<<"Enter name, score, id( enter 0 for default id ) of applicant "<<endl;
-        cin>>nam>>scr>>ida;
-        ++top;
-        if(ida==0){
-            if(top==1)
-            arr[top]= APPLICANT(nam,scr,1);
-            else
-            //arr[top]= APPLICANT(nam,scr,(arr[top-1].getId()));
-            cout<<arr[top-1].getId();
+    void marksinit(){
+        cout<<"Enter Marks for subjects"<<endl;
+        for(int i=0;i<5;i++){
+            cout<<"Subject "<<i+1<<" :  ";
+            cin>>marks[i];
         }
-        else
-        arr[top]= APPLICANT(nam,scr,ida);
-
     }
 
-    void show(){
-        cout<<"The applicant list is :"<<endl;
-        for(int i=1;i<=top;i++)
-        arr[i].show();
+    void marksheet(){
+        cout<<"\nRoll Number of Student: "<<roll<<endl;
+        cout<<"Name of Student: "<<name<<endl;
+        cout<<"Date of Admission: "<<date<<endl;
+        cout<<"Enrolled Course: "<<course<<endl;
+        cout<<"Marks obtained: "<<endl;
+        for(int i=0;i<5;i++)
+        cout<<"Subject "<<i+1<<" : "<<marks[i]<<endl;
     }
-
-    void find(){
-        cout<<"The number of applicants are "<<top<<endl;
-    }
-
 };
+
+
 
 int main(){
-    APPSTK s1;
+    int top=-1;
+    STUDENT s1[100];
 
     for(;;){
-        cout<<"\nEnter \n 1. Enter new applicant \n 2. Find number of applicants \n 3. Show all applicants \n 4. Exit"<<endl;
+        cout<<"\nEnter \n 1. Start a new admission \n 2. Enter marks of the student \n 3. Show the marksheet of current student\n 4. Show the marksheet of all students and total number of students  \n 5. Exit"<<endl;
     int a;
     cin>>a;
     switch (a)
     {
         case 1:{
-            s1.push();
+            s1[++top].admission();
             break;
         }
         case 2:{
-            s1.find();
+            if(top>-1)
+            s1[top].marksinit();
+            else
+            cout<<"No students are present";
             break;
         }
         case 3:{
-            s1.show();
+            if(top>-1)
+            s1[top].marksheet();
+            else
+            cout<<"No students are present";
             break;
         }
         case 4:{
+            if(top>-1){
+                cout<<"There are "<<top+1<<" students. And their marks are as follows: "<<endl;
+                for(int i=0;i<=top;i++)
+                s1[i].marksheet();
+            }
+            //s1[top].marksheet();
+            else
+            cout<<"No students are present";
+            break;
+        }
+        case 5:{
             exit(0);
             break;
         }

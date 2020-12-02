@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include <iostream>
-//#include<bits/stdc++.h>
-using namespace std;
+#include <conio.h>
+#include <string.h>
 
 struct data{
     int age;
-    string name;
+    char name[51];
 };
 
 
@@ -29,25 +28,25 @@ void arrange(struct data arr[],int n)
 }
 void display(struct data arr[],int n)
 {
-  cout<<"_____________"<<endl;
-  cout<<"Age             Name\n";
-  cout<<"_____________"<<endl;
+  printf("_____________\n");
+  printf("Age             Name\n");
+  printf("_____________\n");
     for(int i=0;i<n;i++)
-     cout<<arr[i].age<<"             "<<arr[i].name<<endl;
+     printf("%d             %s",arr[i].age,arr[i].name);
 }
 int main()
 {
    int n,i;
-   cout<<"Enter the number of names to be listed:  ";
-   cin>>n;
+   printf("Enter the number of names to be listed:  ");
+   scanf("%d",&n);
    struct data arr[n];
    
     for(i=0;i<n;i++)
      {
-        cout<<"Enter name: ";
-        cin>>arr[i].name;
-        cout<<("Enter age: ");
-        cin>>arr[i].age;
+        printf("Enter name: ");
+        scanf("%s",&arr[i].name);
+        printf("Enter age: ");
+        scanf("%d",arr[i].age);
      }
      arrange(arr,n);
      display(arr,n);
