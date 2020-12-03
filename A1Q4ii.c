@@ -1,6 +1,6 @@
-#include <stdio.h> 
-#include <iostream> 
-using namespace std;
+#include <stdio.h>
+#include <conio.h>
+
 
 void input(int r, int c, int *arr[]){
   printf("Enter the elements");

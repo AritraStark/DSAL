@@ -1,54 +1,40 @@
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
-
-struct data{
-    int age;
-    char name[51];
-};
-
-
-
-void arrange(struct data arr[],int n)
+ #include<stdio.h>
+ 
+struct student
 {
-   struct data temp;
-   char t[51];
-     for(int i=0;i<n-1;i++)
-     {
-       for(int j=i+1;j<n;j++)
-       {
-          if(arr[i].age>arr[j].age)
-          {
-             temp=arr[i];
-             arr[i]=arr[j];
-             arr[j]=temp;
-          }
-       }
-     }
-}
-void display(struct data arr[],int n)
-{
-  printf("_____________\n");
-  printf("Age             Name\n");
-  printf("_____________\n");
-    for(int i=0;i<n;i++)
-     printf("%d             %s",arr[i].age,arr[i].name);
-}
+    int roll_no,marks;
+    char name[25];
+}stud[100],t;
+ 
 int main()
 {
-   int n,i;
-   printf("Enter the number of names to be listed:  ");
-   scanf("%d",&n);
-   struct data arr[n];
-   
+    int i,j,n;
+    printf("Enter the no of students\n");
+    scanf("%d",&n);
+    printf("enter student info as roll_no , name , marks\n");
     for(i=0;i<n;i++)
-     {
-        printf("Enter name: ");
-        scanf("%s",&arr[i].name);
-        printf("Enter age: ");
-        scanf("%d",arr[i].age);
-     }
-     arrange(arr,n);
-     display(arr,n);
-    return 0;
+    {
+        scanf("%d %s %d",&stud[i].roll_no,stud[i].name,&stud[i].marks);
+    }
+    
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-1;j++)
+        {
+            if(stud[j].marks<stud[j+1].marks)
+            {
+                t=stud[j];
+                stud[j]=stud[j+1];
+                stud[j+1]=t;
+            }
+        }
+    }
+    
+    printf("\nStudent info in terms of marks from highest to lowest\n");
+    printf("\nROLL_NO\t\tNAME\t\tMARKS\n");
+    printf("\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d\t\t\t%s\t\t\t%d\n",stud[i].roll_no,stud[i].name,stud[i].marks);
+    }
 }

@@ -3,7 +3,7 @@
 
 void main()
 {
-    int a=10;
+    int a=15;
     int *p;
     int **pp;
     p=&a;
