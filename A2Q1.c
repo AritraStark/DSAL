@@ -13,57 +13,56 @@ struct node
 void screen()
 {
 	printf("\n");
-	printf(" 1 search for a data in the file.\n");
-	printf(" 2 add data to the file.\n");
-	printf(" 3 edit any data in the file.\n");
-	printf(" 4 delete any data in the file.\n");
-	printf(" 5 display the contents of the file.\n");
-	printf(" 6 exit.\n");
+	printf("1 search for a data in the file.\n");
+	printf("2 add data to the file.\n");
+	printf("3 edit any data in the file.\n");
+	printf("4 delete any data in the file.\n");
+	printf("5 display the contents of the file.\n");
+	printf("6 exit.\n");
 }
 
 struct node search (int type, bool *ok, int key)
 {
 	FILE *fin;
-	fin = fopen("data.dat", "rb");
-	struct node temp;
+	fin = fopen("info.dat", "rb");
+	struct node tp;
 	if (fin == NULL) {
 		printf("Error occured while opening file...\n");
-		return temp;
+		return tp;
 	}
-	while (fread(&temp, sizeof(struct node), 1, fin)) {
-		if (temp.roll == key) {
+	while (fread(&tp, sizeof(struct node), 1, fin)) {
+		if (tp.roll == key) {
 			*ok = true;
 			break;
 		}
 	}
 	if (type == 1) {
 		if (*ok) {
-			printf("Data with roll : %d  ", key);
-			printf("[%d, \'%s\', %d]\n", temp.roll, temp.name, temp.score);
+			printf("Data with roll : %d found! ", key);
+			printf("[%d, \'%s\', %d]\n", tp.roll, tp.name, tp.score);
 		} else {
-			printf("Data with roll : %d was not found.\n", key);
+			printf("Data with roll : %d couldn\'t be found.\n", key);
 		}
 	}
-	return temp;
+	return tp;
 }
 
 void add ()
 {
 	FILE *fout;
-	fout = fopen("data.dat", "ab");
+	fout = fopen("info.dat", "ab");
 	if (fout == NULL) {
 		printf("Error occured while opening file...\n");
 		return;
 	}
 	struct node newNode;
-	printf("Enter data to be added : \n\n");
-    //scanf("%s", &newNode.name);
+	printf("Enter data to be added : \n");
 	printf("Enter roll : \n");
 	scanf("%d", &newNode.roll);
 	bool ok = false;
 	search(0, &ok, newNode.roll);
 	if (ok) {
-		printf("This roll number already exists .\n");
+		printf("This roll number already exists in the file.\n");
 		printf("Please enter a distinct roll number.\n");
 		return;
 	} else {
@@ -75,7 +74,7 @@ void add ()
 		if (fwrite != 0) {
 			printf("Data added successfully.\n");
 		} else {
-			printf("Error writing file. Data couldn't be added.\n");
+			printf("Error writing file. Data couldn\'t be added.\n");
 		}
 	}
 	fclose(fout);
@@ -83,91 +82,91 @@ void add ()
 
 void edit ()
 {
-	printf("Enter roll for edit : \n");
+	printf("Enter roll to edit : \n");
 	int key;
 	scanf("%d", &key);
 	bool ok = false;
 	struct node change = search(1, &ok, key);
 	if (ok) {
 		char choice = 'n';
-		printf("Do you want to edit the name? (y/n)\n");
+		printf("Do you want to edit name? (y/n)\n");
 		scanf(" %c", &choice);
 		if (choice == 'y') {
 			printf("Enter new name : \n");
 			scanf(" %[^\n]s", change.name);
 		}
 		choice = 'n';
-		printf("Do you want to edit the score? (y/n)\n");
+		printf("Do you want to edit score? (y/n)\n");
 		scanf(" %c", &choice);
 		if (choice == 'y') {
 			printf ("Enter new score : \n");
 			scanf("%d", &change.score);
 		}
-		FILE *fin, *temp;
-		temp = fopen("temp.dat", "wb");
-		fin = fopen("data.dat", "rb");
-		if (temp == NULL || fin == NULL) {
+		FILE *fin, *tp;
+		tp = fopen("tp.dat", "wb");
+		fin = fopen("info.dat", "rb");
+		if (tp == NULL || fin == NULL) {
 			printf("Error occured while opening file...\n");
 		}
 		struct node curr;
 		while (fread(&curr, sizeof(struct node), 1, fin)) {
-			fwrite(&curr, sizeof(struct node), 1, temp);
+			fwrite(&curr, sizeof(struct node), 1, tp);
 		}
-		fclose(temp);
+		fclose(tp);
 		fclose(fin);
 		FILE *fout;
-		temp = fopen("temp.dat", "rb");
-		fout = fopen("data.dat", "wb");
+		tp = fopen("tp.dat", "rb");
+		fout = fopen("info.dat", "wb");
 		if (fout == NULL) {
 			printf("Error occured while opening file...\n");
 		}
-		while (fread(&curr, sizeof(struct node), 1, temp)) {
+		while (fread(&curr, sizeof(struct node), 1, tp)) {
 			if (curr.roll == key) {
 				fwrite(&change, sizeof(struct node), 1, fout);
 			} else {
 				fwrite(&curr, sizeof(struct node), 1, fout);
 			}
 		}
-		fclose(temp);
+		fclose(tp);
 		fclose(fout);
-		printf("File Edited Successfully.\n");
+		printf("File Edited .\n");
 	}
 }
 
 void delete ()
 {
-	printf("Enter roll to be deleted : \n");
+	printf("Enter roll to delete : \n");
 	int key;
 	scanf("%d", &key);
 	bool ok = false;
 	struct node change = search(1, &ok, key);
 	if (ok) {
-		FILE *fin, *temp;
-		temp = fopen("temp.dat", "wb");
-		fin = fopen("data.dat", "rb");
-		if (temp == NULL || fin == NULL) {
+		FILE *fin, *tp;
+		tp = fopen("tp.dat", "wb");
+		fin = fopen("info.dat", "rb");
+		if (tp == NULL || fin == NULL) {
 			printf("Error occured while opening file...\n");
 		}
 		struct node curr;
 		while (fread(&curr, sizeof(struct node), 1, fin)) {
-			fwrite(&curr, sizeof(struct node), 1, temp);
+			fwrite(&curr, sizeof(struct node), 1, tp);
 		}
-		fclose(temp);
+		fclose(tp);
 		fclose(fin);
 		FILE *fout;
-		temp = fopen("temp.dat", "rb");
-		fout = fopen("data.dat", "wb");
+		tp = fopen("tp.dat", "rb");
+		fout = fopen("info.dat", "wb");
 		if (fout == NULL) {
 			printf("Error occured while opening file...\n");
 		}
-		while (fread(&curr, sizeof(struct node), 1, temp)) {
+		while (fread(&curr, sizeof(struct node), 1, tp)) {
 			if (curr.roll == key) {
 				continue;
 			} else {
 				fwrite(&curr, sizeof(struct node), 1, fout);
 			}
 		}
-		fclose(temp);
+		fclose(tp);
 		fclose(fout);
 		printf("Data Deleted Successfully. File Edited Successfully.\n");
 	}
@@ -176,7 +175,7 @@ void delete ()
 void display ()
 {
 	FILE *fin;
-	fin = fopen("data.dat", "rb");
+	fin = fopen("info.dat", "rb");
 	if (fin == NULL) {
 		printf("Error occured while opening file");
 		return;
