@@ -1,0 +1,223 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+struct Data{
+    int code,rate,quantity;
+    string name;
+};
+
+class Item{
+    //Item Node initialize
+    public:
+    struct Data d;
+    Item *next;
+};
+
+class ItemList{
+    //Item list initialize
+    private:
+    Item* head;
+    int n;
+    public:
+    ItemList(){
+        head = NULL;
+        n=0;
+    }
+    void insertItem(int code1,string name1,int rate1, int quantity1=0){
+        Item* temp1;
+        temp1->d.code = code1;
+        temp1->d.rate = rate1;
+        temp1->d.name = name1;
+        temp1->d.quantity = quantity1;
+
+        //cin>>temp1->code;
+        // cin>>temp1->rate;
+        // cin>>temp1->name;
+        // cin>>temp1->quantity;
+
+        temp1->next = NULL;
+        if(head == NULL)
+        head = temp1;
+        else{
+            Item* temp2;
+            temp2 = head;
+            while(temp2->next!=NULL)
+            temp2=temp2->next;
+            temp2->next=temp1;
+        }
+        n++;
+        cout<<"Item inserted successfully\n";
+    }
+    bool checkUnique(int code1){
+        Item* temp;
+        temp = head;
+        if(head==NULL)
+        return true;
+        while(temp->next!=NULL){
+            if(temp->d.code == code1)
+            return false;
+            temp = temp->next; 
+        }
+        return true;
+    }
+    int getRate(int code1){
+        Item* temp;
+        while(temp->next!= NULL){
+            if(temp->d.code==code1)
+            return temp->d.rate;
+            temp = temp->next; 
+        }
+        return -1;
+    }
+    int getQuantity(int code1){
+        Item* temp;
+        while(temp->next!= NULL){
+            if(temp->d.code==code1)
+            return temp->d.quantity;
+            temp = temp->next; 
+        }
+        return -1;
+    }
+    void updateRate(int code1,int rate1){
+        Item* temp;
+        while(temp->next!= NULL){
+            if(temp->d.code==code1){
+                temp->d.rate = rate1;
+                cout<<"Rate has been updated\n";
+                return;
+            }
+            
+            temp = temp->next; 
+        }
+        cout<<"Item not found\n";
+    }
+    void recieve(int code1,int quantity2){
+        Item* temp;
+        while(temp->next!= NULL){
+            if(temp->d.code==code1){
+                temp->d.quantity += quantity2;
+                cout<<"Item recieved. Quantity has been updated to :"<<temp->d.quantity<< "\n";
+                return;
+            }
+            
+            temp = temp->next; 
+        }
+        cout<<"Item not found";
+    }
+    void issue(int code1,int quantity2){
+        Item* temp;
+        while(temp->next!= NULL){
+            if(temp->d.code==code1){
+                if(temp->d.quantity>=quantity2){
+                    temp->d.quantity -= quantity2;
+                    cout<<"Item issued. Quantity has been updated to :"<<temp->d.quantity<< "\n";
+                    return;
+                }
+                else{
+                    cout<<"Items insufficient for issuing \n";
+                    return;
+                }
+            }
+            
+            temp = temp->next; 
+        }
+        cout<<"Item not found";
+    }
+};
+
+int main(){
+    ItemList l;
+    for(;;){
+        cout<<"Enter :\n1 for Adding Item \n2 for getting Rate of an item\n3 for getting Quantity of an item\n4 for updating Rate of an item\n5 for issuing an item\n6 for recieving an item\n7 to Exit\n ";
+        int s;
+        cin>>s;
+        switch(s){
+            case 1:{
+                cout<<"Enter details of item in order(code,name,rate,quantity)\n";
+                // int code1,rate1,quantity1;
+                // string name1;
+                // cin>>code1;
+                // cin>>name1;
+                // cin>>rate1;
+                // cin>>quantity1;
+                // Item *temp;
+                // cin>>temp->code>>temp->name>>temp->rate>>temp->quantity;
+                struct Data temp;
+                cin>>temp.code>>temp.name>>temp.rate>>temp.quantity;
+                if(!l.checkUnique(temp.code)){
+                    cout<<"Item code exists";
+                    break;
+                }
+                else{
+                    l.insertItem(temp.code,temp.name,temp.rate,temp.quantity);
+                    //delete(temp);
+                }
+                break;
+            }
+
+            case 2:{
+                cout<<"Enter Item Code to get rate\n";
+                int x;
+                cin>>x;
+                if(l.getRate(x)==-1){
+                    cout<<"Item does not exist in the list\n";
+                    break;
+                }
+                else{
+                    cout<<"The rate of the item is : \n"<<l.getRate(x);
+                    break;
+                }
+            }
+
+            case 3:{
+                cout<<"Enter Item Code to get quantity\n";
+                int x;
+                cin>>x;
+                if(l.getQuantity(x)==-1){
+                    cout<<"Item does not exist in the list\n";
+                    break;
+                }
+                else{
+                    cout<<"The quantity of the item is : \n"<<l.getQuantity(x);
+                    break;
+                }
+            }
+
+            case 4:{
+                cout<<"Enter Item code and rate to update\n";
+                int a,b;
+                cin>>a>>b;
+                l.updateRate(a,b);
+                break;
+            }
+
+            case 5:{
+                cout<<"Enter Item code and quantity to issue\n";
+                int a,b;
+                cin>>a>>b;
+                l.issue(a,b);
+                break;
+            }
+
+            case 6:{
+                cout<<"Enter Item code and quantity to recieve\n";
+                int a,b;
+                cin>>a>>b;
+                l.recieve(a,b);
+                break;
+            }
+
+            case 7:{
+                cout<<"Exiting program\n";
+                exit(1);
+            }
+
+            default:{
+                cout<<"Wrong Input";
+                break;
+            }
+        }
+    }
+}

@@ -38,10 +38,10 @@ struct node search (int type, bool *ok, int key)
 	}
 	if (type == 1) {
 		if (*ok) {
-			printf("Data with roll : %d found! ", key);
+			printf("Data with roll : %d is found ", key);
 			printf("[%d, \'%s\', %d]\n", tp.roll, tp.name, tp.score);
 		} else {
-			printf("Data with roll : %d couldn\'t be found.\n", key);
+			printf("Data with roll : %d couldn't be found.\n", key);
 		}
 	}
 	return tp;

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <conio.h>
 
 void main()
@@ -21,9 +22,8 @@ void main()
 		}
 		printf("The elements of the array are: ");
 		for (i = 0; i < n; ++i) {
-			printf("%d" ,*(ptr+i));
+			printf("%d " ,*(ptr+i));
 		}
 	}
 
-	return 0;
 }
