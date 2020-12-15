@@ -3,15 +3,13 @@
 
 using namespace std;
 
-struct Data{
-    int code,rate,quantity;
-    string name;
-};
 
 class Item{
     //Item Node initialize
+    
     public:
-    struct Data d;
+    int code,rate,quantity;
+    string name;
     Item *next;
 };
 
@@ -26,11 +24,11 @@ class ItemList{
         n=0;
     }
     void insertItem(int code1,string name1,int rate1, int quantity1=0){
-        Item* temp1;
-        temp1->d.code = code1;
-        temp1->d.rate = rate1;
-        temp1->d.name = name1;
-        temp1->d.quantity = quantity1;
+        Item* temp1 = new Item;
+        temp1->code = code1;
+        temp1->rate = rate1;
+        temp1->name = name1;
+        temp1->quantity = quantity1;
 
         //cin>>temp1->code;
         // cin>>temp1->rate;
@@ -51,40 +49,45 @@ class ItemList{
         cout<<"Item inserted successfully\n";
     }
     bool checkUnique(int code1){
-        Item* temp;
+        Item* temp ;
         temp = head;
         if(head==NULL)
         return true;
-        while(temp->next!=NULL){
-            if(temp->d.code == code1)
+        while(temp!=NULL){
+            if(temp->code == code1)
             return false;
             temp = temp->next; 
         }
+
         return true;
     }
     int getRate(int code1){
-        Item* temp;
-        while(temp->next!= NULL){
-            if(temp->d.code==code1)
-            return temp->d.rate;
+        Item* temp ;
+        temp = head;
+        while(temp!= NULL){
+            if(temp->code==code1)
+            return temp->rate;
             temp = temp->next; 
         }
+
         return -1;
     }
     int getQuantity(int code1){
-        Item* temp;
-        while(temp->next!= NULL){
-            if(temp->d.code==code1)
-            return temp->d.quantity;
+        Item* temp ;
+        temp = head;
+        while(temp!= NULL){
+            if(temp->code==code1)
+            return temp->quantity;
             temp = temp->next; 
         }
         return -1;
     }
     void updateRate(int code1,int rate1){
-        Item* temp;
-        while(temp->next!= NULL){
-            if(temp->d.code==code1){
-                temp->d.rate = rate1;
+        Item* temp ;
+        temp = head;
+        while(temp!= NULL){
+            if(temp->code==code1){
+                temp->rate = rate1;
                 cout<<"Rate has been updated\n";
                 return;
             }
@@ -95,10 +98,11 @@ class ItemList{
     }
     void recieve(int code1,int quantity2){
         Item* temp;
-        while(temp->next!= NULL){
-            if(temp->d.code==code1){
-                temp->d.quantity += quantity2;
-                cout<<"Item recieved. Quantity has been updated to :"<<temp->d.quantity<< "\n";
+        temp = head;
+        while(temp!= NULL){
+            if(temp->code==code1){
+                temp->quantity += quantity2;
+                cout<<"Item recieved. Quantity has been updated to :"<<temp->quantity<< "\n";
                 return;
             }
             
@@ -107,22 +111,26 @@ class ItemList{
         cout<<"Item not found";
     }
     void issue(int code1,int quantity2){
-        Item* temp;
-        while(temp->next!= NULL){
-            if(temp->d.code==code1){
-                if(temp->d.quantity>=quantity2){
-                    temp->d.quantity -= quantity2;
-                    cout<<"Item issued. Quantity has been updated to :"<<temp->d.quantity<< "\n";
+        Item* temp ;
+        temp = head;
+        while(temp!= NULL){
+            if(temp->code==code1){
+                if(temp->quantity>=quantity2){
+                    temp->quantity -= quantity2;
+                    cout<<"Item issued. Quantity has been updated to :"<<temp->quantity<< "\n";
+
                     return;
                 }
                 else{
                     cout<<"Items insufficient for issuing \n";
+
                     return;
                 }
             }
             
             temp = temp->next; 
         }
+
         cout<<"Item not found";
     }
 };
@@ -142,18 +150,19 @@ int main(){
                 // cin>>name1;
                 // cin>>rate1;
                 // cin>>quantity1;
-                // Item *temp;
-                // cin>>temp->code>>temp->name>>temp->rate>>temp->quantity;
-                struct Data temp;
-                cin>>temp.code>>temp.name>>temp.rate>>temp.quantity;
-                if(!l.checkUnique(temp.code)){
+                Item *temp= new Item;
+                cin>>temp->code>>temp->name>>temp->rate>>temp->quantity;
+                // struct Data temp;
+                // cin>>temp.code>>temp.name>>temp.rate>>temp.quantity;
+                if(!l.checkUnique(temp->code)){
                     cout<<"Item code exists";
                     break;
                 }
                 else{
-                    l.insertItem(temp.code,temp.name,temp.rate,temp.quantity);
+                    l.insertItem(temp->code,temp->name,temp->rate,temp->quantity);
                     //delete(temp);
                 }
+                delete(temp);
                 break;
             }
 
@@ -166,7 +175,7 @@ int main(){
                     break;
                 }
                 else{
-                    cout<<"The rate of the item is : \n"<<l.getRate(x);
+                    cout<<"The rate of the item is : "<<l.getRate(x)<<endl;
                     break;
                 }
             }
@@ -180,7 +189,7 @@ int main(){
                     break;
                 }
                 else{
-                    cout<<"The quantity of the item is : \n"<<l.getQuantity(x);
+                    cout<<"The quantity of the item is : "<<l.getQuantity(x)<<endl;
                     break;
                 }
             }
