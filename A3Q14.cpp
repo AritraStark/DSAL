@@ -29,12 +29,6 @@ class ItemList{
         temp1->rate = rate1;
         temp1->name = name1;
         temp1->quantity = quantity1;
-
-        //cin>>temp1->code;
-        // cin>>temp1->rate;
-        // cin>>temp1->name;
-        // cin>>temp1->quantity;
-
         temp1->next = NULL;
         if(head == NULL)
         head = temp1;
@@ -144,23 +138,16 @@ int main(){
         switch(s){
             case 1:{
                 cout<<"Enter details of item in order(code,name,rate,quantity)\n";
-                // int code1,rate1,quantity1;
-                // string name1;
-                // cin>>code1;
-                // cin>>name1;
-                // cin>>rate1;
-                // cin>>quantity1;
+
                 Item *temp= new Item;
                 cin>>temp->code>>temp->name>>temp->rate>>temp->quantity;
-                // struct Data temp;
-                // cin>>temp.code>>temp.name>>temp.rate>>temp.quantity;
+
                 if(!l.checkUnique(temp->code)){
                     cout<<"Item code exists";
                     break;
                 }
                 else{
                     l.insertItem(temp->code,temp->name,temp->rate,temp->quantity);
-                    //delete(temp);
                 }
                 delete(temp);
                 break;

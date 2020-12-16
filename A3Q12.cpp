@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <iostream>
 #include <string>
 
@@ -16,18 +15,9 @@ class STUDENT{
         roll = 0;
     }
 
-    // STUDENT(string nm, string crs, string dt,int ids){
-    //     name = nm;
-    //     date = dt;
-    //     roll = ids;
-    //     course = crs;
-    // }
-
     void admission(){
-        //int roll1;
-        //string nam,cours,dae;        
+      
         cout<<"Enter Name, Roll Number, Course and Date (in DD/MM/YY format)  "<<endl;
-        //cin>>nam>>roll1>>cours>>dae;
         cin>>name>>roll>>course>>date;
     }
 

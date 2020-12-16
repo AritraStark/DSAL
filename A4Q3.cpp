@@ -74,12 +74,6 @@ class ARRAY{
 int main(){
 
     
-    ARRAY b(6,5);
-    for(int i=0;i<6;i++)
-    cout<<b[i]<<" ";
-    cout<<endl;
-
-    
 
     
 
@@ -116,7 +110,7 @@ int main(){
                 cout<<endl;
                 cout<<"The second copied Array object is: \n";           
                 ARRAY c(a);
-                c = b;
+                c = b1;
                 for(int i=0;i<a;i++)
                 cout<<c[i]<<" ";
                 cout<<endl;
@@ -142,27 +136,27 @@ int main(){
                 break;
             }
             case 4:{
-                int a,b;
+                int p,q;
                 cout<<"Enter size and value for assignment of first Array object\n";
-                cin>>a>>b;
-                ARRAY b1(a,b);
+                cin>>p>>q;
+                ARRAY d1(p,q);
                 cout<<"The first Array object is: \n";
-                for(int i=0;i<a;i++)
-                cout<<b1[i]<<" ";
+                for(int i=0;i<p;i++)
+                cout<<d1[i]<<" ";
                 int x,y;
                 cout<<"Enter size and value for assignment of second Array object\n";
                 cin>>x>>y;
-                ARRAY b2(x,y);
+                ARRAY d2(x,y);
                 cout<<"The second Array object is: \n";
-                for(int i=0;i<a;i++)
-                cout<<b2[i]<<" ";
-                if(x!=a){
+                for(int i=0;i<p;i++)
+                cout<<d2[i]<<" ";
+                if(x!=p){
                     cout<<"Array object lengths are not same, please enter same length\n";
                     break;
                 }
-                ARRAY d = b1+b2;
+                ARRAY d = d1+d2;
                 cout<<"The added array objects result is:\n";
-                for(int i=0;i<a;i++)
+                for(int i=0;i<p;i++)
                 cout<<d[i]<<" ";
                 cout<<endl;
                 break;

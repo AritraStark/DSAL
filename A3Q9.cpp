@@ -86,7 +86,30 @@ class TIME{
 
 int main(){
     TIME t1;
-    t1.input();
-    t1.output();
+    for(;;){
+        cout<<"Enter : \n1 To take Time input\n2.To show Time output\n3.To exit\n";
+        int c;
+        cin>>c;
+        switch(c){
+            case 1:{
+                t1.input();
+                break;
+            }
+            case 2:{
+                t1.output();
+                break;
+            }
+            case 3:{
+                cout<<"Exiting ...\n";
+                exit(0);
+            }
+            default:{
+                cout<<"Wrong input";
+                break;
+            }
+        }
+    }
+    
+    
     return 0;   
 }

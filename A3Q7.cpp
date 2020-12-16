@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <iostream>
-//#include<bits/stdc++.h>
 using namespace std;
 
 void f(int a,int b){
@@ -20,6 +18,6 @@ int main(){
     cin>>a>>b>>c;
     f(a,b);
     f(b,b);
-    //f(c,c);
+    f(c,c);
     return 0;
 }
