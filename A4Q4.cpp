@@ -168,7 +168,7 @@ int main(){
 	int ch,c;
 	char s;
 	do{
-		cout<<"\nEnter choice\n1. Add two strings\n2. Compare two strings\n3. Copy of a string\n4. Exit\n\n";
+		cout<<"\nEnter :\n1. Add two strings\n2. Compare two strings\n3. Copy of a string\n4. Exit\n\n";
 		cin>>ch;
 		switch(ch){
 			case 1:

@@ -4,12 +4,14 @@
 using namespace std;
 
 class NODE{
+    //Node initialize
     public:
         int data;
         NODE *link;
 };
 
 class LIST{
+    //List Initialize
     private:
 
     NODE* head;
@@ -21,6 +23,7 @@ class LIST{
 
         
         void addNodeHead(int x){
+            //Add at first
             NODE* temp = new NODE;
             temp->data = x;
             temp->link = head;
@@ -29,6 +32,7 @@ class LIST{
         }
 
         void insert(int x, int n){
+            //Insert at n'th
             NODE* temp1 = new NODE;
             temp1->data = x;
             temp1->link = NULL;
@@ -47,6 +51,7 @@ class LIST{
         }
 
         void addEnd(int data){
+            //Add at end
             NODE *temp = new NODE;
             temp->data = data;
             temp->link = NULL;
@@ -65,6 +70,7 @@ class LIST{
         }
 
         void deleteN(int n){
+            //Delete n'th node
             NODE* temp1;
             temp1 = head;
             for(int i=0;i<n-2;i++)
@@ -76,6 +82,7 @@ class LIST{
         }
 
         void print(){
+            //Print all
             NODE* temp;
             temp = head;
             while(temp->link!=NULL){

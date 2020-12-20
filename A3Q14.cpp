@@ -1,3 +1,12 @@
+
+// 14.	Design  the class(es) for the following scenario:
+// •	An item list contains item code, name, rate, and quantity for several items.
+// •	Whenever a new item is added in the list uniqueness of item code is to be checked. 
+// •	Time to time rate of the items may change. 
+// •	Whenever an item is issued or received existence of the item is checked and quantity is updated. 
+// •	In case of issue, availability of quantity is also to be checked.
+// •	User may also like to know price/quantity available for an item.
+
 #include<iostream>
 #include<string>
 
@@ -127,12 +136,22 @@ class ItemList{
 
         cout<<"Item not found";
     }
+    void show(){
+        Item* temp;
+        temp = head;
+        cout<<"Items List\n";
+        while(temp!=NULL){
+            cout<<"Item Code: "<<temp->code<<" | Item Name: "<<temp->name<<" | Item Rate: "<<temp->rate<<" | Item Quantity: "<<temp->quantity;
+            cout<<endl;
+            temp = temp->next;
+        }
+    }
 };
 
 int main(){
     ItemList l;
     for(;;){
-        cout<<"Enter :\n1 for Adding Item \n2 for getting Rate of an item\n3 for getting Quantity of an item\n4 for updating Rate of an item\n5 for issuing an item\n6 for recieving an item\n7 to Exit\n ";
+        cout<<"Enter :\n1 for Adding Item \n2 for getting Rate of an item\n3 for getting Quantity of an item\n4 for updating Rate of an item\n5 for issuing an item\n6 for recieving an item\n7. To show the Item List: \n8 to Exit\n ";
         int s;
         cin>>s;
         switch(s){
@@ -206,6 +225,11 @@ int main(){
             }
 
             case 7:{
+                l.show();
+                break;
+            }
+
+            case 8:{
                 cout<<"Exiting program\n";
                 exit(1);
             }
