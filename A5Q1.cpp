@@ -1,3 +1,10 @@
+/*There are number of students. For every student roll (unique), name is to be
+stored. For each subject, subject code and name is to be stored. A student can
+opt for number of subjects. System should be able to maintain student list,
+subject list and will be able to answer: i) which student has selected which
+subjects and ii) for a subjects who are the students.
+Design the classes and implement. For list consider memory data structure.*/
+
 #include<iostream>
 #include<string>
 #include<vector>
@@ -236,7 +243,7 @@ int main(){
                 break;
             }
             default:{
-                cout<<"Wring Input";
+                cout<<"Wrong Input";
                 break;
             }
         }

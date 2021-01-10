@@ -4,10 +4,10 @@ using namespace std;
 
 class Cricketer{
     private:
-    int dob,match;
+    int dob;
     string name;
     public:
-    
+    int match;
     void setDeet(){
         int x,z;
         string y;
@@ -33,9 +33,10 @@ class Bowler: public Cricketer{
     }
     void setBolwer(){
         int x, y;
-        cout<<"Enter Total Wickets and Average economy of Bowler\n";
+        cout<<"Enter Total Wickets and Total runs given by Bowler\n";
+        cin>>x>>y;
         wickets = x;
-        avgEco = y;
+        avgEco = y/match;
     }
     
     void getBowler(){
@@ -52,11 +53,11 @@ class Batsman: public Cricketer{
         setDeet();
     }
     void setBatsman(){
-        int x, y;
-        cout<<"Enter Total Runs and Average runs of Batsman\n";
-        cin>>x>>y;
+        int x;
+        cout<<"Enter Total Runs of Batsman\n";
+        cin>>x;
         total = x;
-        avgRun = y;
+        avgRun = total/match;
     }
     
     void getBatsman(){
