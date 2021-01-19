@@ -231,7 +231,7 @@ class Transaction{
     MemList a1;
     fstream fio;
     void addB(){
-        fio.open("books.txt",ios::out | ios::app);
+        fio.open("books.dat",ios::out | ios::app | ios::binary);
         int b,c;
         string d,e,f;
         cout<<"Enter Book ID, Title, Author, Publisher, Price:\n";
@@ -242,13 +242,13 @@ class Transaction{
 
     }
     void viewB(){
-        fio.open("books.txt",ios::in);
+        fio.open("books.dat",ios::in | ios::binary);
         cout<<"The list of books are:\n";
         a.display();
         fio.close();
     }
     void addS(){
-        fio.open("members.txt",ios::out | ios::app);
+        fio.open("members.dat",ios::out | ios::app | ios::binary);
         int b;
         string d,e;
         cout<<"Enter Member ID, Name, Email:\n";
@@ -258,7 +258,7 @@ class Transaction{
         fio.close();
     }
     void addM(){
-        fio.open("members.txt",ios::out | ios::app);
+        fio.open("members.dat",ios::out | ios::app | ios::binary);
         int b;
         string d,e;
         cout<<"Enter Member ID, Name, Email:\n";
@@ -268,14 +268,14 @@ class Transaction{
         fio.close();
     }
     void viewM(){
-        fio.open("members.txt",ios::in);
+        fio.open("members.dat",ios::in | ios::binary);
         cout<<"The list of Members are:\n";
         a1.display();
         fio.close();
     }
 
     void issue(){
-        fio.open("transactions.txt",ios::out|ios::app);
+        fio.open("transactions.dat",ios::out|ios::app | ios::binary);
         cout<<"Available Books:\n";
         a.display();
         int k,l;
@@ -289,7 +289,7 @@ class Transaction{
         fio.close();
     }
     void retur(){
-        fio.open("transactions.txt",ios::out|ios::app);
+        fio.open("transactions.dat",ios::out|ios::app | ios::binary);
         int k,l;
         cout<<"Enter Book ID and Member ID\n";
         cin>>k>>l;

@@ -1,0 +1,17 @@
+1. Create an array of student objects (containing roll, name, name and score)
+whose size may vary dynamically once objects are added or removed, randomly
+elements may be accessed, one can find number of objects in the list, one can
+find the student with highest score, find the students with a substring in their
+name and also without a substring in the name. Take the help of suitable STL
+classes.
+2. Create an array of student objects where along with the support mentioned in
+Q.1, one can remove an object with specific roll, sort the collection in the
+descending order and show the same; two student collections can also be
+combined. Take the help of suitable STL class.
+3. Students come to mark sheet collection desk and are served in first come first
+served basis. Implement the scenario. Take the help of suitable STL class.
+4. Maintain a container of students where they are kept in the descending order of
+their scores. Take the help of suitable STL class.
+5. Store the roll and score of the students in a map in the sorted order of roll. One
+should be able to retrieve the score for a given roll. Take the help of suitable STL
+class.
