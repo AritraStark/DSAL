@@ -1,3 +1,6 @@
+// Maintain a container of students where they are kept in the descending order of
+// their scores. Take the help of suitable STL class.
+
 #include<iostream>
 #include<string>
 #include<set>
@@ -31,7 +34,7 @@ void showQ(set<Student> arr)
 int main(){
     set<Student> arr;
     for(;;){
-        cout<<"Enter : \n1. For entering a student to the queue\n2. For showing students\n3. To Exit\n";
+        cout<<"Enter : \n1. For entering a student \n2. For showing students\n3. To Exit\n";
         int c;
         cin>>c;
         switch(c){

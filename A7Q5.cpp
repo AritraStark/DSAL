@@ -1,3 +1,7 @@
+// Store the roll and score of the students in a map in the sorted order of roll. One
+// should be able to retrieve the score for a given roll. Take the help of suitable STL
+// class.
+
 #include<iostream>
 #include<map>
 #include<algorithm>

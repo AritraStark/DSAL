@@ -1,3 +1,6 @@
+//Students come to mark sheet collection desk and are served in first come first
+//served basis. Implement the scenario. Take the help of suitable STL class.
+
 #include<iostream>
 #include<string>
 #include<queue>

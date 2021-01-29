@@ -1,3 +1,8 @@
+// Create an array of student objects where along with the support mentioned in
+// Q.1, one can remove an object with specific roll, sort the collection in the
+// descending order and show the same; two student collections can also be
+// combined. Take the help of suitable STL class.
+
 #include<iostream>
 #include<string>
 #include<vector>
