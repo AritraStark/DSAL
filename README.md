@@ -1,3 +1,3 @@
-# DSAL
-Sem 3 ds algo assignment programs
+# C++ 
+Semester 3 C++ assignments
 
